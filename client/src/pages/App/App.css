@@ -1,0 +1,9 @@
+body{
+    background-image: url('../../../public/car.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position-x:center;
+    font-family: sans-serif;
+}
+

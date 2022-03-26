@@ -1,0 +1,22 @@
+#back_but{
+    position: absolute;
+    margin-top: 0%;
+    width: 50px;
+    height: 35px;
+    left:3%;
+    
+}
+
+.inputs input{    
+    position: relative;
+    display:table;
+    margin: 10px;
+    width: auto;
+    line-height: 20px;
+    left: 43%;
+    
+}
+
+#save_but{
+    margin-top: 1%;
+}

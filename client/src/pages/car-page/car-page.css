@@ -1,0 +1,27 @@
+body{
+    color: white;
+    text-align: center;
+}
+
+#buttons{
+margin-left: 80%;
+}
+
+.main_header{
+  text-align: center;
+}
+
+.carButton {      
+  margin-top: 10%;
+  width: 150px;
+  height: 40px;  
+  padding-top: 9px;
+  color: #080808;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 2px;
+  display: block;
+  margin: 10px 10px;
+  font: normal 14px ;
+ 
+}
