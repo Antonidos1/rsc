@@ -18,6 +18,6 @@ export class InsertDeal{
             price: dealInfo.price,
             status: `for_sale`
         }
-        await this.rep.insertDeal(dealInfo)
+        await this.rep.insertDeal(deal)
     }
 } 
