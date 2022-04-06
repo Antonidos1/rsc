@@ -4,14 +4,20 @@ import { Deal } from '../../../models/deal'
 export class DealRepository {
 
     async getDeals() {
-        await connection.sqlQuery('SELECT * FROM deal')
+       return await connection.sqlQuery('SELECT id, car_id, price, status FROM deal')
     }
 
-    async insertDeal(deal: Deal) {
-        delete deal['id']
+    async insertDeal(deal: Deal) {        
+        delete(deal['id'])
         let values = Object.values(deal).join(', ');
-
-        await connection.sqlQuery(`INSERT INTO deal VALUES ${values}`)
+        console.log(values);
+        let sql = `INSERT INTO deal VALUES (${values})`
+        console.log(sql)
+        try {
+            await connection.sqlQuery(sql)
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     async updatePrice(id: number, price: number) {
@@ -19,7 +25,7 @@ export class DealRepository {
     }
     
     async setDealStatus(status: string, id: number) {
-        await connection.sqlQuery(`UPDATE deal SET status = ${status} WHERE id = ${id}`)
+        await connection.sqlQuery(`UPDATE deal SET status = '${status}' WHERE id = ${id}`)
     }
 
     async getIdOrInsert(obj: any, column: string, table: string): Promise<number> {

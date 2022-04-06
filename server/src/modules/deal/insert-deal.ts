@@ -12,11 +12,12 @@ export class InsertDeal{
 
     async run(req: Request) {
         let dealInfo = req.body
+        console.log(dealInfo)
         const deal: Deal = {
             id: 1,
             car_id: dealInfo.car_id,
             price: dealInfo.price,
-            status: `for_sale`
+            status: `'for_sale'`
         }
         await this.rep.insertDeal(deal)
     }

@@ -20,6 +20,7 @@ const CarTableHeader = observer(() => {
         <tr>
             {returnedHeader}
             <th></th>
+            <th></th>
         </tr>
     </thead>)
 })

@@ -1,7 +1,7 @@
 import { DealRepository } from "./repository/deal.repositoy";
 import { Request } from "express";
 
-export class UpdatePrice {
+export class UpdateStatus {
 
     private rep: DealRepository
 
@@ -10,9 +10,8 @@ export class UpdatePrice {
     }
 
     async run(req: Request) {
-        const id: any = req.query.id
-        const price: any = req.body.price
-        console.log(id+ ' '+price)
-        await this.rep.updatePrice(id, price)
+        let id: any = req.query.id
+        const status: string = req.body.status
+        await this.rep.setDealStatus(status, id)
     }
 } 

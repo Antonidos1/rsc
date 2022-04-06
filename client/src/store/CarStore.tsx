@@ -23,13 +23,12 @@ export class CarStore{
     }
     cars: Car[]
 
-    deleteCar(id: number) {
-        console.log(`ID = ${id}`,);
-        this.cars = this.cars.filter(value => {
-            console.log(value.id);
-            return value.id != id
+    deleteCar(id: number) {       
+        CarService.deleteCar(id).then(res => {
+            this.cars = this.cars.filter(value => {
+                return value.id != id
+            })
         })
-        CarService.deleteCar(id)
     }
 
     async getCarData() {        

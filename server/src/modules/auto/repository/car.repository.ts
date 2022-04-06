@@ -18,7 +18,12 @@ export class CarRepository {
     }
 
     async deleteCar(id: number) {
-        return await connection.sqlQuery(`DELETE FROM car WHERE id = ${id}`)
+        try {
+            return await connection.sqlQuery(`
+        DELETE FROM deal WHERE car_id = ${id}; DELETE FROM car WHERE id = ${id}`)
+        } catch(e) {
+            console.log(e);   
+        }
     }
 
     async getIdOrInsert(obj: any, table: string): Promise<number> {

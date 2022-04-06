@@ -6,19 +6,26 @@ import DealStore from "../../../store/DealStore";
 
 import './table-row.css'
 
-const CarTableRows = observer((zz) => {
+const CarTableRows = observer(() => {
     const [store] = useState(() => new CarStore())
     const [deal] = useState(()=> new DealStore())
-    const [modalActive, setModalActive]= useState(false)
 
     const delElem = (e) => {
-        const id = e.target.id
+        const id = e.target.id.split('/').pop()
         store.deleteCar(parseInt(id))
     }
     const putForSale = (e) => {
-        const id = e.target.id
-        deal.putUpForSale(id,'')
+        console.log(e.target.id)
+        const id = parseInt(e.target.id.split('/').pop())
+        let price: number
+        do {
+            let priceStr = prompt('Input price')
+            if (priceStr == null) return;
+            price = parseInt(priceStr)
+        } while (!price)
+        deal.putUpForSale(id,price)
     }
+    
     function setRow() {
         let rows
         try {
@@ -28,14 +35,14 @@ const CarTableRows = observer((zz) => {
                 })
                 return <tr key={value.id}>
                     {row}
-                    <td><button className={'deleteBut'}
-                        id={'del/'+value.id.toString()}
-                        key={'del/'+value.id.toString()}
+                    <td><button className={'tableBut'}
+                        id={`del/${value.id}`}
+                        key={`del/${value.id}`}
                         onClick={delElem}>delete</button></td>
-                    <td><button className={'deleteBut'}
-                        id={'sel/' + value.id.toString}
-                        key={'sel/' + value.id.toString}
-                    onClick={putForSale}></button></td>
+                    <td><button className={'tableBut'}
+                        id={`sell/${value.id}`}
+                        key={`sell/${value.id}`}
+                    onClick={putForSale}>To Sell</button></td>
                 </tr>
             })
 

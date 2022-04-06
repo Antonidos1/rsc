@@ -6,7 +6,7 @@ export const global_urls = {
     DELETE_CAR: SERVER_DOMAIN + '/car/delete?id=',
 
     GET_DEALS: SERVER_DOMAIN + '/deal/get',
-    INSERT_DEAL: SERVER_DOMAIN + '/deal/insert',
-    CANCEL_DEAL: SERVER_DOMAIN + '/deal/cancel?id=',
-    BUY_CAR: SERVER_DOMAIN + '/deal/buy?id='
+    INSERT_DEAL: SERVER_DOMAIN + '/deal/insert',    
+    UPDATE_STATUS: SERVER_DOMAIN + '/deal/update-status?id=',
+    UPDATE_PRICE: SERVER_DOMAIN +'/deal/update-price?id='
 }
