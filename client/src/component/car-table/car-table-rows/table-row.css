@@ -1,0 +1,8 @@
+.tableBut{
+    width: auto;
+    height: 50%;
+    margin: 0%
+}
+.tableBut:disabled{
+    opacity: 0.6;
+}

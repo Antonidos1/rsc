@@ -16,23 +16,22 @@ export class CarStore{
     constructor() {
         makeAutoObservable(this, {
             deleteCar: action,
-            car: observable,
+            cars: observable,
             getCarData: action
         })
         this.getCarData()
     }
-    car: Car[]
+    cars: Car[]
 
-    deleteCar(id: number) {
-        console.log(`ID = ${id}`,);
-        this.car = this.car.filter(value => {
-            console.log(value.id);
-            return value.id != id
+    deleteCar(id: number) {       
+        CarService.deleteCar(id).then(res => {
+            this.cars = this.cars.filter(value => {
+                return value.id != id
+            })
         })
-        CarService.deleteCar(id)
     }
 
     async getCarData() {        
-        this.car = (await CarService.getCarsData()).data       
+        this.cars = (await CarService.getCarsData()).data       
     }
 }

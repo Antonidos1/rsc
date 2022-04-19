@@ -1,6 +1,5 @@
 import { Router } from "express";
-import { BuyCar } from "../modules/deal/buy-car";
-import { CancellDeal } from "../modules/deal/cancell-deal";
+import { UpdateStatus } from "../modules/deal/update-status";
 import { GetDeals } from "../modules/deal/get-deals";
 import { InsertDeal } from "../modules/deal/insert-deal";
 import { UpdatePrice } from "../modules/deal/update-price";
@@ -8,10 +7,9 @@ import { UpdatePrice } from "../modules/deal/update-price";
 export const dealRouter = Router()
 
 const getDeals = new GetDeals
-const buyCar = new BuyCar
-const cancellDeal = new CancellDeal
 const insertDeal = new InsertDeal
 const updatePrice = new UpdatePrice
+const updateStatus = new UpdateStatus
 
 dealRouter.get('/get', async (req, res) => {
     try {
@@ -32,25 +30,16 @@ dealRouter.post('/insert', async (req, res) => {
     }
 })
 
-dealRouter.post('/cancel', async (req, res) => {
+dealRouter.post('/update-status', async (req, res) => {
     try {
-        await cancellDeal.run(req)
+        await updateStatus.run(req)
         return res.status(200).json({ message: 'Deal succesfully cancelled' })
     } catch (e) {
         return res.status(400).json({ message: e })
     }
 })
 
-dealRouter.post('/buy', async (req, res) => {
-    try {
-        await buyCar.run(req)
-        return res.status(200).json({ message: 'Car successfully purchased' })
-    } catch (e) {
-        return res.status(400).json({ message: e })
-    }
-})
-
-dealRouter.post('/update', async (req, res) => {
+dealRouter.post('/update-price', async (req, res) => {
     try {
         await updatePrice.run(req)
         return res.status(200).json({ message: 'Price successfully updated' })
