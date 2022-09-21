@@ -1,9 +1,8 @@
 CREATE TABLE "deal" (
-	"Id" integer NOT NULL,
+	"id" serial,
 	"car_id" integer NOT NULL,
-	"employee_id" integer NOT NULL,
 	"price" integer NOT NULL,
-	CONSTRAINT "deal_pk" PRIMARY KEY ("Id")
+	CONSTRAINT "deal_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );

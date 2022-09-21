@@ -1,5 +1,3 @@
-import { Request } from 'express'
-import { connection } from '../../db/connection'
 import { CarRepository } from './repository/car.repository'
 
 export class GetCars {

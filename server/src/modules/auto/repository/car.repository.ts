@@ -1,5 +1,5 @@
 import { connection } from '../../../db/connection'
-import { Auto, Country, Mark, Model } from '../../../models/auto'
+import { Auto} from '../../../models/auto'
 
 export class CarRepository {
 
